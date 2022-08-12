@@ -1,0 +1,13 @@
+# ide
+**/.idea
+
+# filesystem
+.DS_Store
+
+# cmake
+cmake-build-debug
+CMakeFiles/**
+cmake_install.cmake
+
+# binary
+*.out
