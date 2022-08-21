@@ -24,5 +24,6 @@ header:
   paths-ignore:
     - '**/*.md'
     - 'LICENSE'
+    - '.dockerignore'
     - '.gitignore'
     - '**/CMakeLists.txt'
