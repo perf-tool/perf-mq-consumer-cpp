@@ -26,11 +26,15 @@ using namespace pulsar;
 
 static string pulsarHost = EnvUtil::getEnv("PULSAR_HOST", "localhost");
 static int pulsarPort = EnvUtil::getEnv("PULSAR_PORT", 6650);
+static string pulsarAuthToken = EnvUtil::getEnv("PULSAR_AUTH_TOKEN", "");
 
 class Pulsar {
 public:
     [[noreturn]] static void start() {
         ClientConfiguration configuration = ClientConfiguration();
+        if (pulsarAuthToken.empty()) {
+            configuration.setAuth(AuthToken::createWithToken(pulsarAuthToken));
+        }
         Client client(getPulsarUrl(), configuration);
         Consumer consumer;
         ConsumerConfiguration config;

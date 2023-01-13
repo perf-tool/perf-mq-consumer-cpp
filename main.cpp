@@ -17,6 +17,7 @@
  * under the License.
  */
 
+#include <cstring>
 #include <iostream>
 #include "pulsar.cpp"
 
