@@ -34,7 +34,7 @@ class Pulsar {
 public:
     [[noreturn]] static void start() {
         ClientConfiguration configuration = ClientConfiguration();
-        if (pulsarAuthToken.empty()) {
+        if (!pulsarAuthToken.empty()) {
             configuration.setAuth(AuthToken::createWithToken(pulsarAuthToken));
         }
         if (pulsarTlsEnable) {
