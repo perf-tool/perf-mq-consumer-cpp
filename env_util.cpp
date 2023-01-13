@@ -31,11 +31,35 @@ public:
         return {value};
     }
 
-    static int getEnv(const char *name, int defaultValue) {
+    static int getEnvInt(const char *name, int defaultValue) {
         char *aux = getenv(name);
         if (aux == nullptr) {
             return defaultValue;
         }
         return atoi(aux);
+    }
+
+    static int getEnvBool(const char *name, bool defaultValue) {
+        char *aux = getenv(name);
+        if (aux == nullptr) {
+            return defaultValue;
+        }
+        return strCmpIgnoreCase(aux, "true");
+    }
+
+    static char tolower(unsigned char ch) {
+        if (ch >= 'A' && ch <= 'Z')
+            ch = 'a' + (ch - 'A');
+        return ch;
+    }
+
+    static bool strCmpIgnoreCase(const char *s1, const char *s2) {
+        const auto *us1 = (const u_char *)s1,
+                *us2 = (const u_char *)s2;
+
+        while (tolower(*us1) == tolower(*us2++))
+            if (*us1++ == '\0')
+                return true;
+        return false;
     }
 };
